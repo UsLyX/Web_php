@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="post">
+        <input type="text" placeholder="Введите ФИО" name="fio">
+        <input type="text" placeholder="Введите адрес" name="address">
+        <input type="text" placeholder="Введите почту" name="email">
+        <input type="password" placeholder="Введите пароль" name="password">
+        <button type="submit" name="button">Отправить</button>
+    </form>
+    <?php 
+        if(isset($_POST['button'])){
+            echo 'ФИО: '.$_POST['fio'].'<br/>';
+            echo 'Адрес: '.$_POST['address'].'<br/>';
+            echo 'Почта: '.$_POST['email'].'<br/>';
+            echo 'Пароль: '.$_POST['password'].'<br/>';
+        }
+    ?>
+    <style>
+        form{
+            display: flex; 
+            flex-direction: column; 
+            width: 30%; 
+            margin: 30px;
+        }
+        form>input{
+            margin: 20px;
+            padding: 15px;
+        }
+        form>button{
+            margin: 20px;
+            padding: 15px;
+        }
+    </style>
+</body>
+</html>
