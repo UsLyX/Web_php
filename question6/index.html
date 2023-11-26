@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="margin-left: 100px;">Построение элипса</h1>
+    <div style="display: flex; margin-left: 100px;">
+        <div style="margin-right: 50px;">
+            <p>Задайте длины полуосей</p>
+            <p>Горизонтальная a = </p>
+            <input type="number" value="50" class="hor">
+            <p>Вертикальная b = </p>
+            <input type="number" value="50" class="ver">
+            <button onclick="elipse()" style="display: block; margin-top: 15px;">Построить</button>
+        </div>
+        <div class="canvas" style="background-color: yellow; width: 400px; height: 400px; position: relative;">
+            <div class="hor" style="position: absolute; top: 50%; left: 0; background-color: black; width: 400px; height: 2px;"></div>
+            <div class="ver" style="position: absolute; top: 0; left: 50%; background-color: black; height: 400px; width: 2px;"></div>
+            <div class="circle" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                                       background-color: transparent; border: 2px solid black;
+                                       border-radius: 50%; width: 50px; height: 50px;"></div>
+        </div>
+    </div>
+
+    <script>
+        const circle = document.querySelector('.circle');
+        const hor = document.querySelector('.hor');
+        const ver = document.querySelector('.ver');
+
+
+        function elipse(){
+            console.log(circle);
+            circle.style.width = `${hor.value}px`;
+            circle.style.height = `${ver.value}px`;
+        }
+    </script>
+</body>
+</html>

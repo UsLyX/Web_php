@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="display: flex; justify-content: space-around;">
+        <p>выберите фотографию</p>
+        <select class="select">
+            <option class="option" value="Тарелка">Тарелка</option>
+            <option class="option" value="Шкаф">Шкаф</option>
+        </select>
+    </div>
+    <img src="../images/3c5b3ba0518bf900d4e82afbf9081f40.jpg" class="img img1" style="display: none;">
+    <img src="../images/x4qicrhs9cs37ekdtv94b244h1rvbd4u.jpg" class="img img2" style="display: none;">
+
+    <script>
+        const select = document.querySelector('.select');
+        const imgs = document.querySelectorAll('.img');
+
+        select.addEventListener('change', (event) => {
+            console.log(event.target.value)
+            switch(event.target.value){
+                case 'Тарелка':
+                    imgs.forEach(img => {img.style.display = 'none'});
+                    document.querySelector('.img1').style.display = 'block';
+                    break;
+                case 'Шкаф':
+                    imgs.forEach(img => {img.style.display = 'none'});
+                    document.querySelector('.img2').style.display = 'block';
+                    break;
+            }
+        })
+
+    </script>
+</body>
+</html>

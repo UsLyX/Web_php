@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div style="border: 1px solid black; width: 300px; padding: 5px;">
+        <div style="display: flex; align-items: center;">
+            <div style="width: 80%; margin-right: 10px;">
+                <div style="text-align: center; border: 1px solid black; margin-bottom: 10px;">Угол</div>
+                <div style="display: flex; justify-content: space-around;">
+                    <div style="border: 1px solid black; width: 50%; text-align: center; margin-right: 10px;">В грдусах</div>
+                    <div style="border: 1px solid black; width: 50%; text-align: center;">В радианах</div>
+                </div>
+            </div>
+            <div class="operation" style="display: flex; justify-content: center; align-items: center; width: 20%; height: 50px; border: 1px solid black;"></div>
+        </div>
+        <div style="display: flex;">
+            <div class="ugol" style="width: 36%; margin-right: 10px;"></div>
+            <div class="rad" style="width: 38%;  margin-right: 10px;"></div>
+            <div class="oper" style="width: 20%;;"></div>
+        </div>
+    </div>
+
+
+    <script>
+        const start = localStorage.getItem('start');
+        const diapazon = localStorage.getItem('diapazon');
+        const shag = localStorage.getItem('shag');
+        const operation = document.querySelector('.operation');
+
+        const ugol = document.querySelector('.ugol');
+        const rad = document.querySelector('.rad');
+        const oper = document.querySelector('.oper');
+        let res = Number(start);
+        
+        let array = [];
+        let i = 0;
+
+        operation.innerHTML = localStorage.getItem('select');
+        console.log(operation.innerText);
+        for(;i < localStorage.getItem('diapazon'); i++){
+            array.push(res);
+            res += Number(shag); 
+        }
+        
+        array.forEach(item => {
+            let element = document.createElement('div');
+            element.innerText = item;
+            element.style.margin = '10px 0';
+            element.style.border = '1px solid black';
+            element.style.textAlign = 'center';
+            ugol.appendChild(element);
+        })
+
+        let radians = array.map(item => item / 180 * Math.PI);
+        
+        radians.forEach(item => {
+            item = item.toFixed(4);
+            let radianBox = document.createElement('div');
+            let operationBox = document.createElement('div');
+
+
+
+            radianBox.innerText = item;
+            radianBox.style.margin = '10px 0';
+            radianBox.style.border = '1px solid black';
+            radianBox.style.textAlign = 'center';
+
+            operationBox.style.margin = '10px 0';
+            operationBox.style.border = '1px solid black';
+            operationBox.style.textAlign = 'center';
+
+            if(operation.innerText == 'sin'){
+                operationBox.innerText = Math.sin(item).toFixed(4);
+            }
+            else if(operation.innerText == 'cos'){
+                operationBox.innerText = Math.cos(item).toFixed(4);
+            }
+            else if(operation.innerText == 'tan'){
+                operationBox.innerText = Math.tan(item).toFixed(4);
+            }
+
+
+            rad.appendChild(radianBox);
+            oper.appendChild(operationBox);
+        })
+
+        
+
+    </script>
+</body>
+</html>
