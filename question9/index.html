@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <p>Стартовая позиция</p>
+        <input type="number" class="start" value="0">
+        <p>Диапазон</p>
+        <input type="number" class="diapazon" value="0">
+        <p>Шаг</p>
+        <input type="number" class="shag" value="0">
+        <select class="select">
+            <option value="sin">Синус</option>
+            <option value="cos">Косинус</option>
+            <option value="tan">Тангенс</option>
+        </select>
+        <button type="button" class="btn" style="display: block; margin-top: 20px;">Вычислить</button>
+    </form>
+
+    <script>
+        const start = document.querySelector('.start');
+        const diapazon = document.querySelector('.diapazon');
+        const shag = document.querySelector('.shag');
+        const select = document.querySelector('.select');
+        const btn = document.querySelector('.btn');
+
+        const open = () => {
+            localStorage.setItem('start', start.value);
+            localStorage.setItem('diapazon', diapazon.value);
+            localStorage.setItem('shag', shag.value);
+            localStorage.setItem('select', select.value);
+
+            window.location.href = 'math.html';
+        }
+
+        btn.addEventListener('click', open)
+    </script>
+</body>
+</html>
