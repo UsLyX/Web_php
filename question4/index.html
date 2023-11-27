@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <input type="text" placeholder="имя" class="name">
+        <input type="text" placeholder="возраст" class="age">
+        <button type="button" class="btn">Отправить</button>
+    </form>
+
+    <div id="information"></div>
+
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+    <script>
+        const btn = document.querySelector('.btn');
+        const user = {
+            name: document.querySelector('.name').value,
+            age: document.querySelector('.age').value
+        }
+
+        function before(){
+            $("#information").text("Ожидание данных...")
+        }
+        function success(data){
+            $("#information").text(data)
+        }
+
+        btn.addEventListener('click', () => {
+            var name = document.querySelector('.name').value;
+            var age = document.querySelector('.age').value;
+            $.ajax({
+                url: "connect.php",
+                type: "POST",
+                data: ({name: name, age: age}),
+                dataType: "html", 
+                beforeSend: before,
+                success: success,
+            })
+        })
+
+    </script>
+</body>
+</html>
